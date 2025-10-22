@@ -65,10 +65,10 @@ export default class Game {
 	}
 
 	moveLeft() {
-		for (let y = 0; y < this.tiles.length; y += 1) {
-            for (let x = 0; x < this.tiles[y].length; x += 1) {
+		for (let y = 0; y < this.tiles.length; y++) {
+            for (let x = 0; x < this.tiles[y].length; x++) {
                 if (!this.tiles[y][x]) continue;
-                for (let o = 0; o < x; o += 1) {
+                for (let o = 0; o < x; o++) {
                     if (!this.tiles[y][o]) {
                         this.tiles[y][o] = this.tiles[y][x];
                         this.tiles[y][x] = null;
@@ -77,19 +77,21 @@ export default class Game {
              }
         }
 	}
+
 	moveRight() {
 		for (let y = 0; y < this.tiles.length; y += 1) {
-                for (let j = this.tiles[y].length - 1; x >= 0; x -= 1) {
-                    if (!this.tiles[y][x]) continue;
-                    for (let o = this.tiles[y].length - 1; o > x; o -= 1) {
-                        if (!this.tiles[y][o]) {
-                            this.tiles[y][o] = this.tiles[y][x];
-                            this.tiles[y][x] = null;
-                        }
+            for (let j = this.tiles[y].length - 1; x >= 0; x -= 1) {
+                if (!this.tiles[y][x]) continue;
+                for (let o = this.tiles[y].length - 1; o > x; o -= 1) {
+                    if (!this.tiles[y][o]) {
+                        this.tiles[y][o] = this.tiles[y][x];
+                        this.tiles[y][x] = null;
                     }
                 }
             }
+        }
 	}
+
 	moveUp() {
 		for(let y = 0; y < this.tiles.length; y++) {
 			for(let x = 0; x < this.tiles[y].length; x++){
@@ -103,6 +105,7 @@ export default class Game {
 			}
 		}
 	 }
+	 
 	moveDown() {
 		 for (let y = this.tiles.length - 1; y >= 0; y -= 1) {
             for (let x = this.tiles[y].length - 1; x >= 0; x -= 1) {
