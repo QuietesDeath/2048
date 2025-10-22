@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2048</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+
+      <header>
+        <h1>2048</h1>
+
+        <div class="container_buttons">
+          <div class="block counter">
+            <h4>Ваш счет</h4>
+            <span>0</span>
+          </div>
+          <div class="block better">
+            <h4>Рекод</h4>
+            <span>0</span>
+          </div>
+          <button class="newGame">
+            Новая игра
+          </button>
+        </div>
+
+      </header>
+
+      <div class="container-game">
+        <div class="grid-container">
+          <div class="grid-row">
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+          </div>
+          <div class="grid-row">
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+          </div>
+          <div class="grid-row">
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+          </div>
+          <div class="grid-row">
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+            <div class="item">
+            </div>
+          </div>
+        </div>
+
+          <div class="game_tiles">
+
+          </div>
+      </div>
+
+
+      <div class="rules">
+        <h2>Как играть?</h2>
+        <p class="game-explanation"></p>Используйте клавиши<strong>W,A,S,D</strong>, чтобы переместить плитки.<br> Когда обе плитки с одним номером, они <strong>сольются в другое число! И вам нужно собрать таким способом число 2048.</strong></p>
+      </div>
+      </div>
+
+
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
