@@ -1,11 +1,14 @@
 import Tile from "./Tile.js"
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
 export default class Game {
 
 	constructor(){
 		this.tileSize = 100
 		this.tileCount = 4
-		// пока не нужны
 
 		this.score = 0
 		this.bestScore = 0
@@ -43,11 +46,9 @@ export default class Game {
 				v = 2;
 			}
 			let emptyCoords = this.findEmptySpaces();
-			let emptyPos = (randomEmptyPos =
-				emptyCoords[Math.floor(Math.random()) * emptyCoords.length]);
-			x = emptyPos.x;
-			y = emptyPos.y;
-			v = emptePos.v;
+			let {x:newX, y:newY} = emptyCoords[getRandomInt(emptyCoords.length)];
+			x = newX;
+			y = newY;
 		}
 		this.tiles[y][x] = new Tile(v);
 	}
@@ -55,7 +56,7 @@ export default class Game {
 	findEmptySpaces() {
 		//
 		let emptyCoords = [];
-		for (let y = 0; y < this.tiles[y].length; y++) {
+		for (let y = 0; y < this.tiles.length; y++) {
 			for (let x = 0; x < this.tiles[y].length; x++) {
 				if (!this.tiles[y][x]) emptyCoords.push({ x, y });
 			}
@@ -64,20 +65,30 @@ export default class Game {
 	}
 
 	moveLeft() {
-		for (let i = 0; y < this.tiles.length; y++) {
-			if (this.tiles[y][x]) {
-				this.tiles[y][0] = this.thiles[y][x]
-				this.tiles[y][x] = null
-			}
-		}
+		for (let y = 0; y < this.tiles.length; y += 1) {
+            for (let x = 0; x < this.tiles[y].length; x += 1) {
+                if (!this.tiles[y][x]) continue;
+                for (let o = 0; o < x; o += 1) {
+                    if (!this.tiles[y][o]) {
+                        this.tiles[y][o] = this.tiles[y][x];
+                        this.tiles[y][x] = null;
+                     }
+                 }
+             }
+        }
 	}
 	moveRight() {
-		for (let i = 0; y < this.tiles.length; y++) {
-			if (this.tiles[y][x]) {
-				this.tiles[y][x] = this.thiles[y][x]
-				this.tiles[y][0] = null
-			}
-		}
+		for (let y = 0; y < this.tiles.length; y += 1) {
+                for (let j = this.tiles[y].length - 1; x >= 0; x -= 1) {
+                    if (!this.tiles[y][x]) continue;
+                    for (let o = this.tiles[y].length - 1; o > x; o -= 1) {
+                        if (!this.tiles[y][o]) {
+                            this.tiles[y][o] = this.tiles[y][x];
+                            this.tiles[y][x] = null;
+                        }
+                    }
+                }
+            }
 	}
 	moveUp() {
 		for(let y = 0; y < this.tiles.length; y++) {
@@ -93,16 +104,16 @@ export default class Game {
 		}
 	 }
 	moveDown() {
-		for(let x = 0; x < this.tiles.length; x++) {
-			for(let y = 0; y < this.tiles[y].length; y++){
-				if(!this.tiles[y][x]) continue;
-				for(let o = 0; 0 < x; o++) {
-					if(!this.tiles[y][o]) {
-						this.tiles[y][o] = this.tiles[y][x];
-						this.tiles[y][x] = null
-					}
-				}
-			}
-		}
+		 for (let y = this.tiles.length - 1; y >= 0; y -= 1) {
+            for (let x = this.tiles[y].length - 1; x >= 0; x -= 1) {
+                 if (!this.tiles[y][x]) continue;
+                for (let o = this.tiles.length - 1; o > y; o -= 1) {
+                     if (!this.tiles[o][x]) {
+                        this.tiles[o][x] = this.tiles[y][x];
+                        this.tiles[y][x] = null;
+                    }
+                }
+            }
+        }
 	}
 }

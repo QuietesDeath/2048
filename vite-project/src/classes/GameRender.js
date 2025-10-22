@@ -7,19 +7,24 @@ const best = document.querySelector(".best");
 const current = document.querySelector(".current");
 
 function render(game) {
-    for (let y = 0; x < game.tiles.length; y++) {
+    gameTiles.innerHTML = ""; 
+    current.innerHTML = `${game.score}`;
+
+    // Игровое поле
+    for (let y = 0; y < game.tiles.length; y++) {
         for (let x = 0; x < game.tiles[y].length; x++) {
             if (!game.tiles[y][x]) continue;
+            // let div = `
+            //   <div class="tile position">2</div>
+            // `
 
             const tile = game.tiles[y][x];
-            let div = DocumentTimeline.createElement("div");
+            let div = document.createElement("div");
+            console.log(tile, tile.value)
             div.innerHTML = tile.value;
-            div.classList.add("tile");
+            div.classList.add("cellGame");
 
-            div.setAttribute(
-                "style",
-                `top: ${y * 100 + y * 10}px; left: ${x * 100 + x * 10}px`
-            );
+            div.setAttribute("style", `top: ${y * 100 + y * 10}px; left: ${x * 100 + x * 10}px; background-color: ${tile.color}; color: black`);
 
             gameTiles.appendChild(div);
         }
@@ -42,6 +47,27 @@ export default function start() {
     window.addEventListener("keydown", (e)=>{
         if (e.code == "KeyA"){
             game.moveLeft()
+            render(game)
+        }
+    })
+
+    window.addEventListener("keydown", (e) =>{
+        if (e.code == "keyD"){
+            game.moveRight()
+            render(game)
+        }
+    })
+
+    window.addEventListener("kaydown", (e)=>{
+        if (e.code == "kayW"){
+            game.moveUp()
+            render(game)
+        }
+    })
+
+    window.addEventListener("kaydown", (e)=>{
+        if (e.code == "kayS"){
+            game.moveDown()
             render(game)
         }
     })

@@ -84,7 +84,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
 	:root {
 		color: #213547;
-		background-color: #070404;
+		background-color: #208a0b;
 	}
 	a:hover {
 		color: #747bff;
@@ -139,7 +139,8 @@ header {
 }
 
 .container-game {
-	width: 100%;
+	width: 450px;
+	height: 450px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -147,14 +148,15 @@ header {
 }
 
 .grid-container {
-	width: 430px;
+	width: 450px;
+	height: 450px;
 	display: grid;
 	grid-template-rows: repeat(4, 100px);
 	gap: 10px;
 	padding: 10px;
 	background-color: #000000;
 	border-radius: 15px;
-	position: relative;
+	position: absolute;
 }
 
 .grid-row {
@@ -181,6 +183,8 @@ header {
 
 .game_tiles {
 	position: absolute;
+	width: 450px;
+	height: 450px;
 }
 
 .tile_block {
@@ -194,7 +198,16 @@ header {
 }
 
 .tile_block > span {
-	color: #070606;
+	color: #460de2;
 	font-size: 30px;
 	font-weight: bold;
+}
+
+.cellGame {
+	height: 100px;
+	width: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
 }
