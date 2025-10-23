@@ -49,24 +49,18 @@ export default function start() {
             game.moveLeft()
             render(game)
         }
-    })
 
-    window.addEventListener("keydown", (e) =>{
-        if (e.code == "keyD"){
+        if (e.code == "KeyD"){
             game.moveRight()
             render(game)
         }
-    })
 
-    window.addEventListener("kaydown", (e)=>{
-        if (e.code == "kayW"){
+        if (e.code == "KeyW"){
             game.moveUp()
             render(game)
         }
-    })
 
-    window.addEventListener("kaydown", (e)=>{
-        if (e.code == "kayS"){
+        if (e.code == "KeyS"){
             game.moveDown()
             render(game)
         }

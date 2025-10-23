@@ -80,7 +80,7 @@ export default class Game {
 
 	moveRight() {
 		for (let y = 0; y < this.tiles.length; y += 1) {
-            for (let j = this.tiles[y].length - 1; x >= 0; x -= 1) {
+            for (let x = this.tiles[y].length - 1; x >= 0; x -= 1) {
                 if (!this.tiles[y][x]) continue;
                 for (let o = this.tiles[y].length - 1; o > x; o -= 1) {
                     if (!this.tiles[y][o]) {
@@ -104,8 +104,8 @@ export default class Game {
 				}
 			}
 		}
-	 }
-	 
+	}
+
 	moveDown() {
 		 for (let y = this.tiles.length - 1; y >= 0; y -= 1) {
             for (let x = this.tiles[y].length - 1; x >= 0; x -= 1) {
